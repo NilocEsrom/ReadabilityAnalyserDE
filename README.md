@@ -17,7 +17,8 @@ Please be aware that there are elements of this program that are derived others,
 Specifically these components are:
 
 **German word concreteness database**
-Used to calculate average concreteness ratings for nouns (stored in program files as *concrete_de.csv*.
+
+Used to calculate average concreteness ratings for nouns (stored in program files as *concrete_de.csv*).
 
 Creators:
 Charbonnier, J. & Wartena, C. (2020). Predicting the Concreteness of German Words. Proceedings of the 5th Swiss Text Analytics Conference (SwissText) & 16th Conference on Natural Language Processing (KONVENS)
@@ -25,6 +26,7 @@ Charbonnier, J. & Wartena, C. (2020). Predicting the Concreteness of German Word
 URL: http://textmining.wp.hs-hannover.de/datasets.html
 
 **HannoverTagger (HanTa)**
+
 Lemmatiser and part of speech tagging library.
 
 Creator:
@@ -34,6 +36,7 @@ URL: https://github.com/wartaal/HanTa
 License: https://github.com/wartaal/HanTa/blob/master/LICENSE
 
 **TIGER corpus**
+
 The training corpus for HanTa
 
 Creator:
