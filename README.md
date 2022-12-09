@@ -130,10 +130,10 @@ Graesser, A. C., McNamara, D. S., & Kulikowich, J. M. (2011). Coh-Metrix: Provid
 
 Graesser, A. C., McNamara, D. S., Cai, Z., Conley, M., Li, H., & Pennebaker, J. (2014). Coh-Metrix measures text characteristics at multiple levels of language and discourse. The Elementary School Journal, 115(2), 210–229. https://doi.org/10.1086/678293
 
-### *WORD_COUNT*
+### WORD_COUNT
 The number of words in the text. Contractions are counted as one word.
 
-### *SENT_LENm, SENT_LENsd*
+### SENT_LENm, SENT_LENsd
 
 Sentence length (mean and standard deviation) as the number of words per sentence. Again Contractions are counted as one word. This is a crude, yet tried and tested reflection of syntactic complexity - that is, the more words in a sentence, the more constituents.
 
@@ -141,16 +141,16 @@ Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 3
 
 Kincaid, J. P., Fishburne, J., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (Automated Readability Index, Fog Count and Flesch Reading Ease Formula) for navy enlisted personnel
 
-### *WORD_LENm, WORD_LENsd*
+### WORD_LENm, WORD_LENsd
 Word length by number of letters. Commas in contractions are not counted. Longer words tend to be more abstract and correlate to age of acquisition (we learn them later in life).
 
 Reilly, J., Hung, J., & Westbury, C. (2017). Non‐Arbitrariness in Mapping Word Form to Meaning: Cross‐Linguistic Formal Markers of Word Concreteness. Cognitive Science, 41(4), 1071–1089. https://doi.org/10.1111/cogs.12361
 
-### *NOUN_OL1m, NOUN_OL1sd, NOUN_OLm, NOUN_OLsd*
+### NOUN_OL1m, NOUN_OL1sd, NOUN_OLm, NOUN_OLsd
 
-### *VERB_OL1m, VERB_OL1sd, VERB_OLm, VERB_OLsd*
+### VERB_OL1m, VERB_OL1sd, VERB_OLm, VERB_OLsd
 
-### *CONTENT_OL1m, CONTENT_OL1sd, CONTENT_OLm, CONTENT_OLsd*
+### CONTENT_OL1m, CONTENT_OL1sd, CONTENT_OLm, CONTENT_OLsd
 Overlap between sentences (ending with 1) and across all sentences of various parts of speech. Represents the cognitive mechanism of semantic activation. If a word is repeated throughout a text, it remains active in our brain and is easier to process next time we encounter it. A weakening effect is calculated into the data as the sentences become more distant.
 
 Bock, J. K. (1986). Syntactic persistence in language production. Cognitive Psychology, 18(3), 355–387. https://doi.org/10.1016/0010-0285(86)90004-6
@@ -161,20 +161,20 @@ Hoedemaker, R. S., & Gordon, P. C. (2014). It takes time to prime: semantic prim
 
 Spätgens, T., & Schoonen, R. (2018). The semantic network, lexical access, and reading comprehension in monolingual and bilingual children: An individual differences study – corrigendum. Applied Psycholinguistics, 39(2), 461–461. https://doi.org/10.1017/S0142716418000012
 
-### *TTR*
+### TTR
 Type-token ratio for content word lemmas. This is the percentage of new content words that appear throughout a text. The higher the number, the more often we have to access our lexicon.
 
 Jarvis, S. (2013). Capturing the diversity in lexical diversity. Language Learning, 63(s1), 87–106. https://doi.org/10.1111/j.1467-9922.2012.00739.x
 
-### *SYNT_COMPm, SYNT_COMPsd*
+### SYNT_COMPm, SYNT_COMPsd
 A measure of syntactic complexity calculated as the proportion of syntax tree heads (NPs and VPs) to the number of individual constituents in a sentence. Lower numbers indicate more complex sentences.
 
 Köhler, R., & Altmann, G. (2000). Probability Distributions of Syntactic Units and Properties. Journal of Quantitative Linguistics, 7(3), 189–200. https://doi.org/10.1076/jqul.7.3.189.4114
 
-### *KONJ_PERC*
+### KONJ_PERC
 A representation of syntactic complexity. The percentage of sentences throughout a text that contain at least one Konjunkitv (subjunctive) clause, such as those starting with *weil* or *dass*.
 
-### *KONJ_LENm, KONJ_LENsd*
+### KONJ_LENm, KONJ_LENsd
 The average length of Konjunktiv (subordinate) clauses throughout a text, calculated as the distance between (and including) the Konjunktiv particle and the verb. This represents the amount of information that must be held in working memory before the the verb is encountered to tie the rest of the sentence together.
 
 Caplan, D., & Waters, G. (2013). Memory mechanisms supporting syntactic comprehension. Psychonomic Bulletin & Review, 20(2), 243–268. https://doi.org/10.3758/s13423-012-0369-9
@@ -185,7 +185,7 @@ Gibson, E., & Warren, T. (2004). Reading-Time Evidence for Intermediate Linguist
 
 Hawkins, J. A. (1990). A Parsing Theory of Word Order Universals. Linguistic Inquiry, 21(2), 223–261. https://www.jstor.org/stable/4178670
 
-### *CONCRETEm, CONCRETEsd*
+### CONCRETEm, CONCRETEsd
 The mean and standard deviation of concreteness ratings of nouns. When a noun represents a real-world physical object (such as *dog*, *tree*, or *chair*), it is easier to process than a noun that represents an abstract concept (such as *freedom*, *emotion*, etc.). 
 
 Blomberg, F., & Öberg, C. (2015). Swedish and English word ratings of imageability, familiarity and age of acquisition are highly correlated. Nordic Journal of Linguistics, 38(3), 351–364. https://doi.org/10.1017/S0332586515000220
@@ -194,7 +194,7 @@ Brysbaert, M., Warriner, A. B., & Kuperman, V. (2014a). Concreteness ratings for
 
 Brysbaert, M., Stevens, M., De Deyne, S., Voorspoels, W., & Storms, G. (2014b). Norms of age of acquisition and concreteness for 30,000 Dutch words. Acta Psychologica, 150, 80–84. https://doi.org/10.1016/j.actpsy.2014.04.010
 
-### *PRONOUN*
+### PRONOUN
 The percentage of total words in the text that are tagged as a personal pronouns. Pronouns are indicative a narrative genre which, overall tends to be easier to read than informative or argumentative genres.
 
 Simon-Shoshan, M. (2013). Narrativity and the study of stories. Workshop on Computational Models of Narrative. 228-237. 10.4230/OASIcs.CMN.2013.228
