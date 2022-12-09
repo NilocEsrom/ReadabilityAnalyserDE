@@ -12,7 +12,7 @@ My access to a larger sample of testing material (and advance statistical knowle
 I'm happy for people to use the components of this program that I myself have written for their own projects, as long as they credit me as per the licence.
 
 ***HOWEVER***
-Please be aware that there are elements of this program that are derived other developers and researchers, which may or may not specify different license terms, including non-commercial use. Please respect their work by adhering to their respective licences.
+Please be aware that there are elements of this program that were created by other developers and researchers, which may or may not specify different license terms, including non-commercial use. Please respect their work by adhering to their respective licences.
 
 Specifically these components are:
 
