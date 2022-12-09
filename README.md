@@ -172,7 +172,7 @@ A measure of syntactic complexity calculated as the proportion of syntax tree he
 Köhler, R., & Altmann, G. (2000). Probability Distributions of Syntactic Units and Properties. Journal of Quantitative Linguistics, 7(3), 189–200. https://doi.org/10.1076/jqul.7.3.189.4114
 
 ### *KONJ_PERC*
-A representation of syntactic complexity. The percentage of sentences throughout a text that contain at least one Konjunkitv (subjunctive) clause, such as those starting with *weil * or *dass*.
+A representation of syntactic complexity. The percentage of sentences throughout a text that contain at least one Konjunkitv (subjunctive) clause, such as those starting with *weil* or *dass*.
 
 ### *KONJ_LENm, KONJ_LENsd*
 The average length of Konjunktiv (subordinate) clauses throughout a text, calculated as the distance between (and including) the Konjunktiv particle and the verb. This represents the amount of information that must be held in working memory before the the verb is encountered to tie the rest of the sentence together.
@@ -194,7 +194,7 @@ Brysbaert, M., Warriner, A. B., & Kuperman, V. (2014a). Concreteness ratings for
 
 Brysbaert, M., Stevens, M., De Deyne, S., Voorspoels, W., & Storms, G. (2014b). Norms of age of acquisition and concreteness for 30,000 Dutch words. Acta Psychologica, 150, 80–84. https://doi.org/10.1016/j.actpsy.2014.04.010
 
-###* PRONOUN*
+### *PRONOUN*
 The percentage of total words in the text that are tagged as a personal pronouns. Pronouns are indicative a narrative genre which, overall tends to be easier to read than informative or argumentative genres.
 
 Simon-Shoshan, M. (2013). Narrativity and the study of stories. Workshop on Computational Models of Narrative. 228-237. 10.4230/OASIcs.CMN.2013.228
