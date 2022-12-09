@@ -1,10 +1,10 @@
 # ReadabilityAnalyserDE (RADE)
 
-ReadabilityAnalyserDE (RADE) is an automated text analysis program for German texts, written in Python. It is inspired by Coh-Metrix, an online tool that measures several readability characteristics of English.
+ReadabilityAnalyserDE (RADE) is an automated text analysis program for German texts, written in Python. It is inspired by Coh-Metrix, an online tool that measures the readability of English texts across several dimensions.
 
-I'm in the process of writing a user report of correlation strengths to CEFR ratings.
+I'm in the process of writing a user report of correlation strengths to CEFR ratings, using 84 learner graded text.
 
-My access to a testing material (or statistics knowledge for that matter) makes it difficult to do any kind of principle component analysis, but I welcome offers of collaboration.
+My access to a larger sample of testing material (and advance statistical knowledge of things like Principle Component Analysis) makes it difficult to do any kind of extensive testing, but I welcome offers of collaboration.
 
 
 ## Licensing
@@ -33,6 +33,7 @@ Creator:
 Wartena, C. (2019). A Probabilistic Morphology Model for German Lemmatization. Proceedings of the 15th Conference on Natural Language Processing (KONVENS 2019): Long Papers. 40-49. https://doi.org/10.25968/opus-1527
 
 URL: https://github.com/wartaal/HanTa
+
 License: https://github.com/wartaal/HanTa/blob/master/LICENSE
 
 **TIGER corpus**
@@ -43,6 +44,7 @@ Creator:
 Brants, S., Stefanie Dipper, S., Eisenberg, P., Hansen, S., König, E., Lezius, W., Rohrer, C., Smith, G., & Uszkoreit. H. (2004). TIGER: Linguistic Interpretation of a German Corpus. Journal of Language and Computation, 2, 597-620
 
 URL: https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/tiger/
+
 License: https://www.ims.uni-stuttgart.de/documents/ressourcen/korpora/tiger-corpus/license/htmlicense.html
 
 
@@ -63,7 +65,9 @@ Depending the number and size of the text, the analysis may take several moments
 
 When the program is finished, the message *Abgeschlossen!* will be printed to the screen.
  
-A CSV file (comma delimited) will be created in the *usr_output* folder with the name *data_array_date-and-time.csv*. This can be loaded into the statistical package of your choice (R, SPSS, etc.). Ensure to remove the variable description row before performing statistical analysis, and add any additional independent variables (eg. difficulty level, text genre, etc.).
+A CSV file (comma delimited) will be created in the *usr_output* folder with the name *data_array_date-and-time.csv*. This can be loaded into the statistical package of your choice (R, SPSS, etc.). Ensure to remove the variable description row before performing statistical analysis, and add any additional independent variables (eg. difficulty level, text genre, etc.). 
+
+Apart from the title, 26 data variable columns will be created:
 
 ## SUMMARY OF VARIABLES
 **WORD_COUNT** Number of words in text
@@ -120,7 +124,7 @@ A CSV file (comma delimited) will be created in the *usr_output* folder with the
 
 
 ## Detailed variable descriptions
-Apart from the title, 26 data variable columns will be created. I'll give a brief description of each one below, as well references to literature. For a great overall introduction to automated readability analysis, I recommend the following:
+For a great overall introduction to automated readability analysis, I recommend the following:
 
 Graesser, A. C., McNamara, D. S., & Kulikowich, J. M. (2011). Coh-Metrix: Providing multilevel analyses of text characteristics. Educational Researcher, 40(5), 223–234. https://doi.org/10.3102/0013189X11413260
 
