@@ -1,6 +1,6 @@
-# TextAnalyzerDE (RADE)
+# ReadabilityAnalyserDE (RADE)
 
-TextAnalyzerDE (RADE) is a readability analyser for German texts, written in Python. It is inspired by Coh-Metrix, an online tool that measures several readability characteristics of English.
+ReadabilityAnalyserDE (RADE) is an automated text analysis program for German texts, written in Python. It is inspired by Coh-Metrix, an online tool that measures several readability characteristics of English.
 
 I'm in the process of writing a user report of correlation strengths to CEFR ratings.
 
