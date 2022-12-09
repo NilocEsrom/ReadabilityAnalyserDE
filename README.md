@@ -65,8 +65,61 @@ When the program is finished, the message *Abgeschlossen!* will be printed to th
  
 A CSV file (comma delimited) will be created in the *usr_output* folder with the name *data_array_date-and-time.csv*. This can be loaded into the statistical package of your choice (R, SPSS, etc.). Ensure to remove the variable description row before performing statistical analysis, and add any additional independent variables (eg. difficulty level, text genre, etc.).
 
+## SUMMARY OF VARIABLES
+**WORD_COUNT** Number of words in text
 
-## Variable descriptions
+**SENT_LENm** Number of words in sentence, mean
+
+**SENT_LENsd** Number of words in sentence, std dev
+
+**WORD_LENm** Word length, letters, mean
+
+**WORD_LENsd** Word length, letters, std dev
+
+**NOUN_OL1m** Noun lemma overlap, adjacent sentences, mean
+
+**NOUN_OL1sd** Noun lemma overlap, adjacent sentences, std dev
+
+**NOUN_OLm** Noun lemma overlap, all sentences, mean
+
+**NOUN_OLsd** Noun lemma overlap, all sentences, std dev
+
+**VERB_OL1m** Verb lemma overlap, adjacent sentences, mean
+
+**VERB_OL1sd** Verb lemma overlap, adjacent sentences, std dev
+
+**VERB_OLm** Verb lemma overlap, all sentences, mean
+
+**VERB_OLsd** Verb lemma overlap, all sentences, std dev
+
+**CONTENT_OL1m** Content word lemma overlap, adjacent sentences, mean
+
+**CONTENT_OL1sd** Content word lemma overlap, adjacent sentences, std dev
+
+**CONTENT_OLm** Content word lemma overlap, all sentences, mean
+
+**CONTENT_OLsd** Content word lemma overlap, all sentences, std dev
+
+**TTR** Type-token ratio, content word lemmas
+
+**SYNT_COMPm** Proportion of NP and VP heads to constituents, mean
+
+**SYNT_COMPsd** Proportion of NP and VP heads to constituents, sd
+
+**KONJ_PERCm** Percentage of sentences with at least on Konjunktiv clause
+
+**KONJ_LENm** Distance between konjunktiv particle and verb, mean
+
+**KONJ_LENsd** Distance between konjunktiv particle and verb, std dev
+
+**CONCRETEm** Word concreteness, mean
+
+**CONCRETEsd** Word concreteness, std dev
+
+**PRONOUN** Personal pronoun incidence
+
+
+## Detailed variable descriptions
 Apart from the title, 26 data variable columns will be created. I'll give a brief description of each one below, as well references to literature. For a great overall introduction to automated readability analysis, I recommend the following:
 
 Graesser, A. C., McNamara, D. S., & Kulikowich, J. M. (2011). Coh-Metrix: Providing multilevel analyses of text characteristics. Educational Researcher, 40(5), 223–234. https://doi.org/10.3102/0013189X11413260
@@ -83,7 +136,6 @@ Sentence length (mean and standard deviation) as the number of words per sentenc
 Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
 
 Kincaid, J. P., Fishburne, J., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (Automated Readability Index, Fog Count and Flesch Reading Ease Formula) for navy enlisted personnel
-
 
 ### *WORD_LENm, WORD_LENsd*
 Word length by number of letters. Commas in contractions are not counted. Longer words tend to be more abstract and correlate to age of acquisition (we learn them later in life).
@@ -145,28 +197,53 @@ Simon-Shoshan, M. (2013). Narrativity and the study of stories. Workshop on Comp
 
 ## SUMMARY OF VARIABLES
 **WORD_COUNT** Number of words in text
+
 **SENT_LENm** Number of words in sentence, mean
+
 **SENT_LENsd** Number of words in sentence, std dev
+
 **WORD_LENm** Word length, letters, mean
+
 **WORD_LENsd** Word length, letters, std dev
+
 **NOUN_OL1m** Noun lemma overlap, adjacent sentences, mean
+
 **NOUN_OL1sd** Noun lemma overlap, adjacent sentences, std dev
+
 **NOUN_OLm** Noun lemma overlap, all sentences, mean
+
 **NOUN_OLsd** Noun lemma overlap, all sentences, std dev
+
 **VERB_OL1m** Verb lemma overlap, adjacent sentences, mean
+
 **VERB_OL1sd** Verb lemma overlap, adjacent sentences, std dev
+
 **VERB_OLm** Verb lemma overlap, all sentences, mean
+
 **VERB_OLsd** Verb lemma overlap, all sentences, std dev
+
 **CONTENT_OL1m** Content word lemma overlap, adjacent sentences, mean
+
 **CONTENT_OL1sd** Content word lemma overlap, adjacent sentences, std dev
+
 **CONTENT_OLm** Content word lemma overlap, all sentences, mean
+
 **CONTENT_OLsd** Content word lemma overlap, all sentences, std dev
+
 **TTR** Type-token ratio, content word lemmas
+
 **SYNT_COMPm** Proportion of NP and VP heads to constituents, mean
+
 **SYNT_COMPsd** Proportion of NP and VP heads to constituents, sd
+
 **KONJ_PERCm** Percentage of sentences with at least on Konjunktiv clause
+
 **KONJ_LENm** Distance between konjunktiv particle and verb, mean
+
 **KONJ_LENsd** Distance between konjunktiv particle and verb, std dev
+
 **CONCRETEm** Word concreteness, mean
+
 **CONCRETEsd** Word concreteness, std dev
+
 **PRONOUN** Pronoun incidence
