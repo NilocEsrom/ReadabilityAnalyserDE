@@ -12,9 +12,9 @@ def word_count(text):
 	### returns mean and standard deviation
 	
 	# clean text
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*'?[a-zA-ZäöüÄÖÜ]*" # Regex pattern catches all letters and apostrophes.
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	word_list = re.findall(re_pattern, generic_punctuation) # converts text into a string of words	
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*'?[a-zA-ZäöüÄÖÜ]*" # letters and apostrophes.
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	word_list = re.findall(re_pattern, generic_punctuation)
 	WORD_COUNT = len(word_list)
 	
 	return WORD_COUNT
@@ -29,13 +29,11 @@ def sent_length(text):
 	### returns mean and standard deviation
 	
 	# clean text
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?" # catch all letters, apostrophes and full stops	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # replace non-standard punctuation	
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words	
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	
-	sent_list = clean_text.split('.') # split text into list of sentences, w/fullstop delimiter
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?" # letters, apostrophes and full stops	
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")
+	word_list = re.findall(re_pattern, generic_punctuation)
+	cleaned_text = " ".join(word_list)	
+	sent_list = cleaned_text.split('.')
 		
 	# count number of words in each sentence and append to a list
 	sent_lengths = []	
@@ -64,9 +62,9 @@ def word_length(text):
 	### returns mean and standard deviation
 	
 	# clean text
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*" # catch all letters and apostrophes
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # replace non-standard punctuation	
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words	
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*" # letters and apostrophes
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")
+	word_list = re.findall(re_pattern, generic_punctuation)
 	
 	# count number of letters in each word and append to list
 	word_lengths = []
@@ -110,46 +108,46 @@ def noun_overlap(text):
 	### returns mean and sd for adjacent sentences and entire text.
 
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # catch all letters, and full stops		
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences	
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # letters, apostrophes, commas, and full stops		
+	word_list = re.findall(re_pattern, generic_punctuation)		
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 	
 	overlap_scores1 = [] # adjacent sentences only
 	overlap_scores = [] # full text
-	
-	
+		
 	keep_tags = ["NN"]
 	
 	for sent1 in sent_list:
 		if sent1 != "":
-			filtered_lemmas1 = []
+			lemma_list1 = []
 			idx1 = sent_list.index(sent1)		
-			words = nltk.word_tokenize(sent1) # lemmatization
+			words = nltk.word_tokenize(sent1)
 			lemmata1 = tagger.tag_sent(words, taglevel = 1)
 			
 			for token in lemmata1:
 				if token[2] in keep_tags:
-					filtered_lemmas1.append(token[1])
+					lemma_list1.append(token[1])
 				
 					
 			for sent2 in sent_list:
 				if sent2 != "":
-					filtered_lemmas2 = []
+					lemma_list2 = []
 					idx2 = sent_list.index(sent2)
 					words = nltk.word_tokenize(sent2)
 					lemmata2 = tagger.tag_sent(words, taglevel = 1)
+					
 					if idx1 < idx2:
 						adjustment = idx2 - idx1
 					
 						for token in lemmata2:							
 							if token[2] in keep_tags:
-								filtered_lemmas2.append(token[1])
-														
-						for lemma in filtered_lemmas1:							
-							if lemma in filtered_lemmas2:																
+								lemma_list2.append(token[1])
+													
+						for lemma in lemma_list2:							
+							if lemma in lemma_list1:																
+
 								if adjustment == 1:
 									overlap_scores1.append(1)								
 								
@@ -168,6 +166,7 @@ def noun_overlap(text):
 
 	return round(NOUN_OL1m, 5), round(NOUN_OL1sd, 5), round(NOUN_OLm, 5), round(NOUN_OLsd, 5)			
 
+
 ####################################################################################################################
 
 
@@ -177,12 +176,11 @@ def verb_overlap(text):
 	### 	effect is weakened as sentences become more distant. 
 
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # catch all letters, and full stops		
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences	
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # letters, apostrophes, commas, and full stops		
+	word_list = re.findall(re_pattern, generic_punctuation)		
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')	
 	
 	overlap_scores1 = [] # adjacent sentences only
 	overlap_scores = [] # full text
@@ -191,31 +189,33 @@ def verb_overlap(text):
 	
 	for sent1 in sent_list:
 		if sent1 != "":
-			filtered_lemmas1 = []
+			lemma_list1 = []
 			idx1 = sent_list.index(sent1)		
-			words = nltk.word_tokenize(sent1) # lemmatization
+			words = nltk.word_tokenize(sent1)
 			lemmata1 = tagger.tag_sent(words, taglevel = 1)
 			
 			for token in lemmata1:
 				if token[2] in keep_tags:
-					filtered_lemmas1.append(token[1])
+					lemma_list1.append(token[1])
 				
 					
 			for sent2 in sent_list:
 				if sent2 != "":
-					filtered_lemmas2 = []
+					lemma_list2 = []
 					idx2 = sent_list.index(sent2)
 					words = nltk.word_tokenize(sent2)
 					lemmata2 = tagger.tag_sent(words, taglevel = 1)
+					
 					if idx1 < idx2:
 						adjustment = idx2 - idx1
 					
 						for token in lemmata2:							
 							if token[2] in keep_tags:
-								filtered_lemmas2.append(token[1])
-														
-						for lemma in filtered_lemmas1:							
-							if lemma in filtered_lemmas2:																
+								lemma_list2.append(token[1])
+													
+						for lemma in lemma_list2:							
+							if lemma in lemma_list1:																
+
 								if adjustment == 1:
 									overlap_scores1.append(1)								
 								
@@ -238,51 +238,53 @@ def verb_overlap(text):
 ####################################################################################################################
 
 
+
 def content_word_overlap(text):
 	###  binary measure to check if there is an overlapping noun, verb, or adjective lemma
 	###	 	in adjecent sentences and across all sentences.
 	### 	effect is weakened as sentences become more distant. 
 
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # catch all letters, and full stops.	
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences	
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9]*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # letters, commas, apostrophes, and full stops.	
+	word_list = re.findall(re_pattern, generic_punctuation)			
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')	
 	
 	overlap_scores1 = [] # adjacent sentences only
 	overlap_scores = [] # full text
 		
-	keep_tags = ["VVFIN", "VVIMP", "VVINF", "VVIZU", "VVPP" "NN", "ADJD", "ADJA"]
+	keep_tags = ["VVFIN", "VVIMP", "VVINF", "VVIZU", "VVPP", "NN", "ADJD", "ADJA"]
 	
 	for sent1 in sent_list:
 		if sent1 != "":
-			filtered_lemmas1 = []
+			lemma_list1 = []
 			idx1 = sent_list.index(sent1)		
 			words = nltk.word_tokenize(sent1) # lemmatization
 			lemmata1 = tagger.tag_sent(words, taglevel = 1)
 			
 			for token in lemmata1:
 				if token[2] in keep_tags:
-					filtered_lemmas1.append(token[1])
+					lemma_list1.append(token[1])
 				
 					
 			for sent2 in sent_list:
 				if sent2 != "":
-					filtered_lemmas2 = []
+					lemma_list2 = []
 					idx2 = sent_list.index(sent2)
 					words = nltk.word_tokenize(sent2)
 					lemmata2 = tagger.tag_sent(words, taglevel = 1)
+					
 					if idx1 < idx2:
 						adjustment = idx2 - idx1
 					
 						for token in lemmata2:							
 							if token[2] in keep_tags:
-								filtered_lemmas2.append(token[1])
-														
-						for lemma in filtered_lemmas1:							
-							if lemma in filtered_lemmas2:																
+								lemma_list2.append(token[1])
+													
+						for lemma in lemma_list2:							
+							if lemma in lemma_list1:																
+
 								if adjustment == 1:
 									overlap_scores1.append(1)								
 								
@@ -301,9 +303,6 @@ def content_word_overlap(text):
 	
 	return round(CONTENT_OL1m, 5), round(CONTENT_OL1sd, 5), round(CONTENT_OLm, 5), round(CONTENT_OLsd, 5)		
 
-			
-####################################################################################################################
-
 
 ####################################################################################################################
 
@@ -312,12 +311,11 @@ def type_token_ratio(text):
 	### gives the percentage of new content words (nouns, adjectives, verbs, adverbs) among all content words in the text
 		
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # catch all letters, and full stops, and apostrophes		
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # letters, commas, apostrophes and full stops		
 	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences		
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 	
 	content_tokens = []
 	content_types = []
@@ -326,7 +324,7 @@ def type_token_ratio(text):
 	
 	for sent in sent_list:
 		if sent != "":
-			words = nltk.word_tokenize(sent) # lemmatization
+			words = nltk.word_tokenize(sent)
 			lemmata = tagger.tag_sent(words, taglevel = 1)
 			
 			for lemma in lemmata:
@@ -349,12 +347,11 @@ def syntactic_complexity(text):
 	### lower numbers indicate more complex syntax
 
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # catch all letters, full stops, and apostrophes		
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ0-9]+\\'?[a-zA-ZäöüÄÖÜ0-9*\\'?[a-zA-ZäöüÄÖÜ0-9]*\\.?\\,?" # letters, full stops, commas, and apostrophes		
+	word_list = re.findall(re_pattern, generic_punctuation)		
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 
 	keep_tags = ["NN" "NE", "VVFIN", "VVIMP", "VVINF", "VVIZU", "VVPP"]
 	
@@ -365,7 +362,7 @@ def syntactic_complexity(text):
 			heads = 0
 			constituents = 0
 			
-			words = nltk.word_tokenize(sent) # lemmatization
+			words = nltk.word_tokenize(sent)
 			lemmata = tagger.tag_sent(words, taglevel = 1)
 		
 			for lemma in lemmata:
@@ -391,12 +388,11 @@ def konjunktiv_density(text):
 	### measures the percentage of sentences that include at least one konjunktiv clause
 
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # catch all letters, and full stops		
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # letters, apostrophes, full stops, and commas		
+	word_list = re.findall(re_pattern, generic_punctuation)			
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 
 	keep_tags = ["KOUS", "KOUI"]
 		
@@ -407,7 +403,7 @@ def konjunktiv_density(text):
 		if sent != "":
 			sent_count += 1
 			
-			words = nltk.word_tokenize(sent) # lemmatization
+			words = nltk.word_tokenize(sent)
 			lemmata = tagger.tag_sent(words, taglevel = 1)
 			
 			for lemma in lemmata:
@@ -429,12 +425,11 @@ def konjunktiv_length(text):
 	### give preference to the auxiliary or modal verb as the last part of the clause
 	
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # catch all letters, and full stops		
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words			
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # letters, apostrophes, commas, and full stops		
+	word_list = re.findall(re_pattern, generic_punctuation)		
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 
 	konj_tags = ["KOUS", "KOUI"]
 	verb_tags = ["VVFIN", "VVIMP", "VVINF", "VVIZU", "VVPP"]
@@ -443,7 +438,7 @@ def konjunktiv_length(text):
 	
 	for sent in sent_list:
 		if sent != "":		
-			words = nltk.word_tokenize(sent) # lemmatization
+			words = nltk.word_tokenize(sent)
 			lemmata = tagger.tag_sent(words, taglevel = 1)
 		
 			for lemma in lemmata:
@@ -453,9 +448,9 @@ def konjunktiv_length(text):
 					
 					for lemma2 in lemmata[start_idx:]:
 						distance += 1
-						if lemma2[2] in verb_tags:
-							end_idx = lemmata.index(lemma2)							
+						if lemma2[2] in verb_tags:						
 							konj_lengths.append(distance)
+							break
 	
 	if len(konj_lengths) > 1:					
 		KONJ_LENm = mean(konj_lengths)
@@ -471,8 +466,7 @@ def konjunktiv_length(text):
 				
 	return round(KONJ_LENm, 3), round(KONJ_LENsd, 3)
 
-print(konjunktiv_length(test))
-print(konjunktiv_length(test2))
+
 ####################################################################################################################
 
 
@@ -501,21 +495,18 @@ def concreteness(text):
 			conc_dict[word] = rating
 		
 	# clean text	
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # Replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # catch all letters, apostrophes and full stops	
-	
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words	
-		
-	clean_text = " ".join(word_list) # rejoin as a clean text
-
-	sent_list = clean_text.split('.') # split text into list of sentences
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # letters, apostrophes, commas, and full stops		
+	word_list = re.findall(re_pattern, generic_punctuation)			
+	cleaned_text = " ".join(word_list)
+	sent_list = cleaned_text.split('.')
 		
 	concrete_scores = []
 	
 	for sent in sent_list:
 		sent = sent.lstrip() 
 	
-		words = nltk.word_tokenize(sent) # lemmatization
+		words = nltk.word_tokenize(sent)
 		lemmata = tagger.tag_sent(words, taglevel = 1)
 			
 		content_words = []
@@ -537,14 +528,11 @@ def pronouns(text):
 	### counts the percentage of words in a text tagged as pronoun 'PPER'
 	
 	# clean text
-	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'") # replace non-standard punctuation	
-	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # catch all letters, apostrophes, full stops, and commas
-	
-	word_list = re.findall(re_pattern, generic_punctuation) # convert text into a list of words	
-	
-	clean_text = " ".join(word_list) # rejoins as a clean text
-
-	sent_list = clean_text.split('.') # split text into a list of sentences
+	generic_punctuation = text.replace('!', '.').replace('?', '.').replace('’', "'").replace('‘', "'")	
+	re_pattern = "[a-zA-ZäöüÄÖÜ]+\\'?[a-zA-ZäöüÄÖÜ]*\\'?[a-zA-ZäöüÄÖÜ]*\\.?\\,?" # letters, apostrophes, full stops, and commas	
+	word_list = re.findall(re_pattern, generic_punctuation)	
+	cleaned_text = " ".join(word_list) # rejoins as a clean text
+	sent_list = cleaned_text.split('.') # split text into a list of sentences
 	
 	keep_tags = ["PPER"]
 		
@@ -663,6 +651,7 @@ def data_array(dct, dt):
 
 
 from datetime import datetime # write current date and time to output files			
+
 def main():
 	### triggers the program
 	
@@ -674,16 +663,4 @@ def main():
 
 
 ### RUN THE PROGRAM			
-main()			
-			
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+main()
