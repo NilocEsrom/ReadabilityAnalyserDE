@@ -628,12 +628,7 @@ def data_array(dct, dt):
 		data_headers = ["Title","WORD_COUNT","SENT_LENm","SENT_LENsd","WORD_LENm","\
 		WORD_LENsd", "NOUN_OL1m", "NOUN_OL1sd", "NOUN_OLm", "NOUN_OLsd", "VERB_OL1m", "VERB_OL1sd", "VERB_OLm", "VERB_OLsd", "CONTENT_OL1m", "CONTENT_OL1sd", "CONTENT_OLm", "CONTENT_OLsd", "TTR", "SYNT_COMPm", "SYNT_COMPsd", "KONJ_PERC", "KONJ_LENm", "KONJ_LENsd", "CONCRETEm","CONCRETEsd", "PRONOUN"]
 		
-		data_descriptors = ["Title of text","Word count","Number of words in sentence, mean","Number of words in sentence, std dev","Word length, letters, mean","\
-		Word length, letters, std dev", "Noun overlap adjacent sentences, mean", "Noun overlap, adjacent sentences, std dev", "Noun overlap, full text, mean", "Noun overlap, full text, std dev", "Verb overlap, adjacent sentences, mean", "Verb overlap, adjacent sentences, sd", "Verb overlap, full text, mean", "Verb overlap, full text, sd", "Content word overlap, adjacent sentences, binary mean", "Content word overlap, adjacent sentences, binary, std dev", "Content word overlap, full text, mean", "Content word overlap, full text, std dev", "Type token ratio, content word lemmas", "Syntactic complexity, mean", "Syntactic complexity, std dev", "Konjunktiv clause density %", "Konjunktiv clause length, mean", "Konjunktiv clause length, std dev", "Word concreteness, mean","Word concreteness, std dev", "Pronoun incidence"]
-		
-		writer(data_csv).writerow(data_headers)
-		writer(data_csv).writerow(data_descriptors)
-		
+		writer(data_csv).writerow(data_headers)		
 		
 		titles = []	# alphabetise the data array	
 		for title in dct:
